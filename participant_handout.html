@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><title>Participant Handout – NYCSIP AI Training</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0e1f38;--gold:#e4b84a;--goldl:#f5d98a;--cream:#fdfaf4;--ink:#1a1a2e;--muted:#6b7280;--border:#e2d9c8;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'DM Sans',sans-serif;font-size:13pt;background:#f0ece4;color:var(--ink);line-height:1.6;}
+.page{max-width:1150px;width:94%;min-height:11in;margin:.4in auto;background:var(--cream);box-shadow:0 4px 40px rgba(0,0,0,.15);}
+.header{background:var(--navy);padding:.45in .6in .35in;position:relative;}
+.header::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:var(--gold);}
+.header-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.2in;}
+.logo-area{display:flex;align-items:center;gap:10px;}
+.header-meta{text-align:right;color:rgba(255,255,255,.5);font-size:8pt;font-weight:300;line-height:1.7;}
+.header-meta strong{color:var(--goldl);font-weight:500;}
+.doc-badge{display:inline-flex;align-items:center;gap:8px;background:var(--gold);padding:4px 14px 4px 10px;border-radius:3px;margin-bottom:8px;}
+.doc-badge-text{font-size:8.5pt;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.08em;}
+.header-title{color:white;font-family:'DM Serif Display',serif;font-size:22pt;line-height:1.1;}
+.header-sub{color:rgba(255,255,255,.55);font-size:9.5pt;font-weight:300;margin-top:4px;}
+.body{padding:.4in .6in .5in;}
+.section{margin-bottom:.3in;}
+.section-label{font-size:8pt;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);border-bottom:2px solid var(--gold);padding-bottom:4px;margin-bottom:.15in;display:flex;align-items:center;gap:8px;}
+.section-label .badge{background:var(--navy);color:var(--gold);font-size:7pt;padding:2px 7px;border-radius:2px;font-weight:600;}
+h3{font-family:'DM Serif Display',serif;font-size:15pt;color:var(--navy);margin-bottom:.1in;}
+p{font-size:10pt;color:var(--ink);line-height:1.6;margin-bottom:.08in;}
+.gold-box{background:rgba(228,184,74,.1);border:2px solid var(--gold);border-radius:6px;padding:.18in .2in;margin:.12in 0;}
+.gold-box.fill{background:var(--gold);}
+.gold-box.fill p{color:var(--navy);font-weight:600;}
+.write-line{border-bottom:1px solid var(--border);height:.38in;margin:.06in 0;}
+.write-box{border:1.5px solid var(--border);border-radius:4px;min-height:.8in;padding:.1in;margin:.08in 0;}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:.25in;}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.2in;}
+.card{border:1.5px solid var(--border);border-radius:5px;padding:.15in;}
+.card-title{font-size:9pt;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.08in;}
+.bullet-list{list-style:none;display:flex;flex-direction:column;gap:.06in;}
+.bullet-list li{font-size:10pt;color:var(--ink);padding-left:1.2em;position:relative;line-height:1.5;}
+.bullet-list li::before{content:'--';position:absolute;left:0;color:var(--gold);font-family:'DM Mono',monospace;font-size:.85em;}
+.footer{background:var(--navy);padding:.15in .6in;display:flex;justify-content:space-between;align-items:center;}
+.footer-left{font-size:8pt;color:rgba(255,255,255,.45);}
+.footer-left strong{color:var(--gold);font-weight:500;}
+.footer-right{font-size:8pt;color:rgba(255,255,255,.4);}
+.highlight{background:rgba(228,184,74,.12);border-left:3px solid var(--gold);padding:.08in .12in;border-radius:0 4px 4px 0;font-size:9.5pt;}
+table{width:100%;border-collapse:collapse;}
+th{background:var(--navy);color:var(--gold);font-size:9pt;font-weight:600;padding:.1in .15in;text-align:left;letter-spacing:.04em;text-transform:uppercase;}
+td{padding:.1in .15in;font-size:10pt;border-bottom:1px solid var(--border);vertical-align:top;}
+tr:nth-child(even) td{background:rgba(228,184,74,.04);}
+code{font-family:'DM Mono',monospace;background:rgba(14,31,56,.08);color:var(--navy);padding:1px 5px;border-radius:3px;font-size:.9em;}
+@media print{body{font-size:10pt!important;}
+.page{width:8.5in!important;max-width:none!important;margin:0!important;box-shadow:none!important;}}
+
+.madlib-box{background:var(--gold);border-radius:8px;padding:.2in .25in;}
+.madlib-inner{background:#fef9ec;border-radius:6px;padding:.18in .2in;font-size:13pt;line-height:1.9;color:var(--navy);}
+.v1{color:#e07020;font-weight:700;}.v2{color:#2060c0;font-weight:700;}.v3{color:#a020a0;font-weight:700;}
+.blank{display:inline-block;width:3.5in;border-bottom:2px solid var(--navy);min-height:.35in;vertical-align:bottom;}
+.blank-sm{display:inline-block;width:2in;border-bottom:2px solid var(--navy);min-height:.3in;vertical-align:bottom;}
+
+/* COPY-ABLE EXERCISE BLOCKS */
+.copy-wrap{position:relative;margin:.1in 0;}
+.copy-bar{display:flex;justify-content:flex-end;margin-bottom:4px;}
+.copy-btn{background:var(--navy);color:var(--gold);border:none;border-radius:4px;padding:5px 14px;font-family:'DM Sans',sans-serif;font-size:8.5pt;font-weight:600;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;transition:background .15s,color .15s;}
+.copy-btn:hover{background:#16294a;}
+.copy-btn.copied{background:var(--gold);color:var(--navy);}
+.copy-block{width:100%;font-family:'DM Mono',monospace;background:rgba(14,31,56,.04);border:2px solid var(--border);border-radius:6px;padding:.15in;color:var(--ink);resize:none;cursor:text;}
+@media print{.copy-btn{display:none;}}
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="header">
+  <div class="header-top">
+    <div class="header-meta"><strong>NYCSIP 2026 &middot; AI Training</strong><br>Grove School of Engineering<br>275 Convent Avenue, New York, NY 10031</div>
+  </div>
+  <div class="doc-badge"><span class="doc-badge-text">Participant Handout</span></div>
+  <div class="header-title">AI on the Job</div>
+  <div class="header-sub">Your workbook for today. Fill this in, not a phone.</div>
+</div>
+<div class="body">
+
+<!-- SCHEDULE -->
+<div class="section">
+  <div class="section-label">Schedule</div>
+  <table>
+    <thead><tr><th>Time</th><th>Block</th></tr></thead>
+    <tbody>
+      <tr><td>10:30 – 10:45</td><td>Open + find your team</td></tr>
+      <tr><td>10:45 – 10:55</td><td>Definitions (captain-led)</td></tr>
+      <tr><td>10:55 – 11:00</td><td>Three rules</td></tr>
+      <tr><td>11:00 – 11:20</td><td>Identify the pain point</td></tr>
+      <tr><td>11:20 – 11:50</td><td>The prompting framework</td></tr>
+      <tr><td>11:50 – 11:55</td><td>What is vibe coding</td></tr>
+      <tr><td>11:55 – 12:00</td><td>Your project's brain</td></tr>
+      <tr><td>12:00 – 12:05</td><td>Pick your tool + quick setup</td></tr>
+      <tr><td>12:05 – 12:25</td><td>Build along: World Clock 001 + 002</td></tr>
+      <tr><td>12:25 – 12:30</td><td>Group photo</td></tr>
+      <tr><td>12:30 – 1:15</td><td>Lunch (outside)</td></tr>
+      <tr><td>1:15 – 1:20</td><td>Build hour: what to build</td></tr>
+      <tr><td>1:20 – 2:15</td><td>Build hour (live timer)</td></tr>
+      <tr><td>2:15 – 2:50</td><td>Demos + close</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- THREE RULES -->
+<div class="section">
+  <div class="section-label">Three Rules</div>
+  <div class="three-col">
+    <div class="card">
+      <div class="card-title">1. Protect private info</div>
+      <p>No PII. No client data. No proprietary information in prompts.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">2. Human in the loop</div>
+      <p>AI drafts. You decide. You ship.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">3. Build for your community</div>
+      <p>Solve a real problem for real people. Not a demo.</p>
+    </div>
+  </div>
+</div>
+
+<!-- MADLIB WORKSHEET -->
+<div class="section">
+  <div class="section-label"><span class="badge">11:00 – 11:20</span> Pain Point MADLIB</div>
+  <h3>Name Your Pain Point</h3>
+  <p>Fill it in. Write your real one, not a tidy one. Three minutes alone, then share with your team.</p>
+  <div class="madlib-box" style="margin:.15in 0;">
+    <div class="madlib-inner">
+      My pain point at work is that <span class="blank v1"></span>.<br><br>
+      If I had <span class="blank v2"></span>,<br>
+      I would <span class="blank v3"></span>.
+    </div>
+  </div>
+  <p style="font-size:9pt;color:var(--muted);">Strong example: "I have to answer hundreds of visitor calls and emails all day / answer even half of those automatically / get 5 hours back a week to work on more important museum work."</p>
+</div>
+
+<!-- YOUR PITA -->
+<div class="section">
+  <div class="section-label">Your PITA</div>
+  <h3>Find one PITA outside work, and one at your internship</h3>
+  <p>A PITA is a task you repeat that is a pain to do. Copy the worksheet below into a Google Doc and fill it out once for each. The Three Filters at the bottom tell you whether it is a good fit for AI.</p>
+  <div class="copy-wrap">
+    <div class="copy-bar"><button class="copy-btn" onclick="copyBlock(this)">Copy</button></div>
+    <textarea class="copy-block" readonly onclick="this.select()" style="font-size:9pt;line-height:1.8;height:3in;" title="Click Copy, then paste into a Google Doc">YOUR PITA WORKSHEET
+(Copy this once for a personal PITA, once for a work PITA.)
+
+1. The task I want to automate:
+
+2. The steps (write it like a recipe):
+   Step 1:
+   Step 2:
+   Step 3:
+
+3. How long does it take, and how often?
+
+4. Three Filters check:
+   Procedure - can you write the steps before you do it?
+   Repetition - is it the same structure every time?
+   Risk - what is the cost if it is wrong?</textarea>
+  </div>
+</div>
+
+<!-- THREE FILTERS (reference) -->
+<div class="section">
+  <div class="section-label">Three Filters</div>
+  <table>
+    <thead><tr><th>Filter</th><th>Ask</th><th>Rule of thumb</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Procedure</strong></td><td>Can you write it down before you do it?</td><td>Procedure = AI candidate. "It depends" = human judgment.</td></tr>
+      <tr><td><strong>Repetition</strong></td><td>Does it repeat the same structure every time?</td><td>Same shape is easier to automate.</td></tr>
+      <tr><td><strong>Risk</strong></td><td>What is the cost if it is wrong?</td><td>Low stakes: automate. High stakes: AI drafts, you decide.</td></tr>
+    </tbody>
+  </table>
+  <div class="highlight" style="margin-top:.12in;">The goal is to find the automation layer within a human-led process. Never automate the whole task.</div>
+</div>
+
+<!-- PROMPTING FRAMEWORK (reference) -->
+<div class="section">
+  <div class="section-label"><span class="badge">11:20 – 11:50</span> Prompting Framework</div>
+  <table>
+    <thead><tr><th>Step</th><th>What to do</th><th>Example</th></tr></thead>
+    <tbody>
+      <tr><td><strong>01 Role &amp; Goal</strong></td><td>Tell AI who it is and what to accomplish.</td><td>"You are an onboarding assistant for a new intern. Help me understand my role."</td></tr>
+      <tr><td><strong>02 Steps</strong></td><td>Break the task into clear numbered steps.</td><td>"Step 1: ask what I do. Step 2: list what I should learn first. Step 3: draft a plan."</td></tr>
+      <tr><td><strong>03 Output</strong></td><td>Describe exactly what you want back.</td><td>"Give me a draft email I can send to my team today."</td></tr>
+      <tr><td><strong>04 Reflection</strong></td><td>Ask AI to verify its own work.</td><td>"Confirm the answer is specific to my organization, not generic."</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- PROMPT COOKBOOK -->
+<div class="section">
+  <div class="section-label">The Prompt Cookbook</div>
+  <h3>A library of prompts for nonprofits</h3>
+  <p>Go to <code>decodedfutures.nyc/prompt-cookbook</code> to find proven prompts organized by use case. Below is a starting prompt you can use right now. Fill in the brackets, then paste it into your AI tool.</p>
+  <div class="copy-wrap">
+    <div class="copy-bar"><button class="copy-btn" onclick="copyBlock(this)">Copy</button></div>
+    <textarea class="copy-block" readonly onclick="this.select()" style="font-size:8.5pt;line-height:1.8;height:3.8in;" title="Click Copy, then paste into your AI tool">Help me onboard to my new internship.
+
+# Role &amp; Goal
+You are an onboarding assistant for a new intern.
+Your goal is to help me understand my organization, my role,
+and what success looks like in my first few weeks.
+
+# My situation
+- Organization: [name of the organization where you are interning]
+- My role: [your title or function]
+- Main responsibilities: [2-3 things you will be doing]
+- Tools I will use: [list the tools, apps, or systems]
+- Something I want to learn: [one skill or area]
+
+# What I need right now
+[Describe one specific thing you need help with, e.g.,
+"write a professional introduction email to my team" or
+"explain what a development director at a nonprofit does"]
+
+# Output format
+Give me [a draft email / a checklist / a step-by-step plan].
+
+# Reflection
+Before responding, confirm your answer is specific to the
+organization I described, not a generic response.</textarea>
+  </div>
+</div>
+
+<!-- CONTEXT FILE TEMPLATE -->
+<div class="section">
+  <div class="section-label"><span class="badge">12:05 – 12:25</span> Context File Template</div>
+  <h3>Your project's brain</h3>
+  <p>This file describes your project so the AI knows it every session. It is not a prompt. Lead with the project, not a persona. Organize it as What you are building, Why and who for, and How it should work.</p>
+  <p style="font-size:9pt;color:var(--muted);margin-bottom:.08in;">Save it as: <code>CLAUDE.md</code> / <code>AGENTS.md</code> / <code>GEMINI.md</code> / ChatGPT Project instructions / Google AI Studio system instructions</p>
+  <p style="font-size:9pt;font-weight:600;color:var(--navy);margin-bottom:.06in;">Step 1. Copy this baseline (World Clock 001)</p>
+  <div class="copy-wrap">
+    <div class="copy-bar"><button class="copy-btn" onclick="copyBlock(this)">Copy</button></div>
+    <textarea class="copy-block" readonly onclick="this.select()" style="font-size:8pt;line-height:1.75;height:4.2in;" title="Click Copy, then paste into your AI tool"># Role
+You are helping me build the project described below.
+I am not a developer, so explain choices in plain language.
+
+# What we are building
+A browser-based world clock: a single HTML file that shows
+the current time in multiple time zones and updates every second.
+
+# Why / who it is for
+A student intern learning AI-assisted building. Anyone should
+be able to read every clock at a glance.
+
+# What good looks like
+- One HTML file that opens in any browser, no install
+- At least 3 time zones: New York, London, Tokyo
+- Updates live every second
+- A city label and the date on each clock
+
+# How to work
+- Keep all CSS and JavaScript inline in the one file
+- Keep the code simple, with a comment on each section
+
+# Before you finish, check
+- Does the file work on its own, with no other files?
+- Do all clocks show the correct time?
+- Does the time update every second?</textarea>
+  </div>
+  <p style="font-size:9pt;font-weight:600;color:var(--navy);margin:.12in 0 .06in;">Step 2. Now write yours (your build hour project)</p>
+  <div class="copy-wrap">
+    <div class="copy-bar"><button class="copy-btn" onclick="copyBlock(this)">Copy</button></div>
+    <textarea class="copy-block" readonly onclick="this.select()" style="font-size:8pt;line-height:1.75;height:3.4in;" title="Click Copy, then paste into your AI tool"># Role
+You are helping me build the project described below.
+
+# What we are building
+[What you are building and what it must do.]
+
+# Why / who it is for
+[Who will use it and why it matters to them.]
+
+# What good looks like
+- [First thing it must do well]
+- [Second]
+- [Third]
+
+# How to work
+- [Any style, rules, or steps to follow]
+- [What to never do]
+
+# Before you finish, check
+- [Does it match what good looks like?]
+- [Is anything missing?]</textarea>
+  </div>
+  <p style="font-size:9pt;color:var(--muted);margin-top:.08in;">Every session starts with this file. Update it as you learn what works.</p>
+</div>
+
+<!-- REFLECTION -->
+<div class="section">
+  <div class="section-label">End-of-Day Reflection</div>
+  <p style="font-weight:600;margin-bottom:.1in;">Take these home. You do not need to write them down here.</p>
+  <ul class="bullet-list" style="gap:.1in;">
+    <li>What shortcut did you try today?</li>
+    <li>What workflow will you map at your internship this week?</li>
+  </ul>
+  <div class="gold-box" style="margin-top:.15in;">
+    <p style="font-size:10pt;color:var(--navy);font-weight:500;margin:0;">You can't take shortcuts to good. AI augments problem-solving. It does not replace it.</p>
+  </div>
+</div>
+
+</div>
+
+<div class="footer">
+  <div class="footer-left"><strong>Welcome to Chinatown</strong> &nbsp;|&nbsp; welcometochinatown.org</div>
+  <div class="footer-right">Participant Handout &nbsp;|&nbsp; NYCSIP 2026</div>
+</div>
+</div>
+
+<script>
+function copyBlock(btn){
+  var ta = btn.closest('.copy-wrap').querySelector('textarea');
+  ta.focus(); ta.select();
+  var done = function(){
+    var prev = btn.textContent;
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(function(){ btn.textContent = prev; btn.classList.remove('copied'); }, 1500);
+  };
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(ta.value).then(done, function(){ document.execCommand('copy'); done(); });
+  } else {
+    document.execCommand('copy'); done();
+  }
+}
+</script>
+</body>
+</html>
